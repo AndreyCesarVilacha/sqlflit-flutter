@@ -64,7 +64,23 @@ class _HomeState extends State<Home> {
     Database db = await _recuperarBancoDados();
 
     //Uma variável para armazenar o comando SQL
-    String sql = "SELECT * FROM usuario";
+    //Recuperando todas as informações da tabela usuario
+    //String sql = "SELECT * FROM usuario";
+    //Recuperando os usuarios que tem idade igual a 46
+    //String sql = "SELECT * FROM usuario WHERE idade = 46";
+    //Recuperando o usuario com o nome Andrey Cesar
+    //String sql = "SELECT * FROM usuario WHERE nome = 'Andrey Cesar'";
+    //Recuperando o usuario com idade e nome
+    //String sql = "SELECT * FROM usuario WHERE nome = 'Carlos Silvério' AND idade = 25";
+    //Recuperando informação entre valores
+    //String sql = "SELECT * FROM usuario WHERE idade BETWEEN 26 AND 30";
+    //Recuperando informação com o carcter coringa '%' que diz que qualquer valor depois e aceito
+    //String sql = "SELECT * FROM usuario WHERE nome LIKE 'Ana%'";
+    //Ordenado os nome de forma decresente
+    //String sql = "SELECT * FROM usuario WHERE 1=1 ORDER BY UPPER(nome) DESC";
+    //Colocando um limite para os resultados
+    String sql = "SELECT * FROM usuario LIMIT 4";
+
 
     //Ele recupera as informações da tabela
     List usuarioInfo = await db.rawQuery(sql);
@@ -75,7 +91,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    _salvar();
+    //_salvar();
     _listarUsuario();
 
     return Container();
