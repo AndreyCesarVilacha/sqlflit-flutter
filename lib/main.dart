@@ -55,12 +55,27 @@ class _HomeState extends State<Home> {
 
     //Inserindo valores na tabela
     int id = await db.insert("usuario", dadosUsuario);
-    print("Salvo: $id");
+
+    //print("Salvo: $id");
+  }
+
+  //Método responsavel por recuperar as informações no banco de dados
+  _listarUsuario() async {
+    Database db = await _recuperarBancoDados();
+
+    //Uma variável para armazenar o comando SQL
+    String sql = "SELECT * FROM usuario";
+
+    //Ele recupera as informações da tabela
+    List usuarioInfo = await db.rawQuery(sql);
+
+    print("usuário: " + usuarioInfo.toString() );
+
   }
 
   @override
   Widget build(BuildContext context) {
-    _salvar();
+    _listarUsuario();
 
     return Container();
   }
