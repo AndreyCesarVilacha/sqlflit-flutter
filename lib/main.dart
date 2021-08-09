@@ -49,8 +49,8 @@ class _HomeState extends State<Home> {
     //Map responsavel por armazenar as informações do usuário
     Map<String, dynamic> dadosUsuario = {
       //Todas as chaves devem ter o mesmo nome que no banco de dados
-      "nome": "Andrey Cesar",
-      "idade": 26,
+      "nome": "Doglas Monte Negro",
+      "idade": 46,
     };
 
     //Inserindo valores na tabela
@@ -75,6 +75,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    _salvar();
     _listarUsuario();
 
     return Container();
