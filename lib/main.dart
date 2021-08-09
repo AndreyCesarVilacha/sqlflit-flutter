@@ -117,11 +117,11 @@ class _HomeState extends State<Home> {
     Database db = await _recuperarBancoDados();
 
     Map<String, dynamic> dadosUsuario = {
-      "nome": "Poliana Robert",
-      "idade": 16,
+      "nome": "Maria Suzana",
+      "idade": 67,
     };
 
-    db.update("usuario", dadosUsuario);
+    int retorno = await db.update("usuario", dadosUsuario, where: "id = ?", whereArgs: [id]);
 
   }
 
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
     //_salvar();
     //_recuperarUsuarioID(6);
     //_excluirUsuario(4);
-    _atualizarUsuario(7);
+    //_atualizarUsuario(6);
     _listarUsuario();
 
     return Container();
