@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
 
     //Uma variável para armazenar o comando SQL
     //Recuperando todas as informações da tabela usuario
-    //String sql = "SELECT * FROM usuario";
+    String sql = "SELECT * FROM usuario";
     //Recuperando os usuarios que tem idade igual a 46
     //String sql = "SELECT * FROM usuario WHERE idade = 46";
     //Recuperando o usuario com o nome Andrey Cesar
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
     //Ordenado os nome de forma decresente
     //String sql = "SELECT * FROM usuario WHERE 1=1 ORDER BY UPPER(nome) DESC";
     //Colocando um limite para os resultados
-    String sql = "SELECT * FROM usuario LIMIT 4";
+    //String sql = "SELECT * FROM usuario LIMIT 4";
 
 
     //Ele recupera as informações da tabela
@@ -89,9 +89,35 @@ class _HomeState extends State<Home> {
 
   }
 
+  _recuperarUsuarioID(int id) async {
+    Database db = await _recuperarBancoDados();
+
+    List usuarios = await db.query(
+      "usuario",
+      columns: ["id", "nome", 'idade'],
+      where: "id = ? ",
+      whereArgs: [id]
+    );
+
+    print(usuarios);
+
+  }
+
+  _excluirUsuario(int id) async {
+    Database db = await _recuperarBancoDados();
+
+    int retorno = await db.delete(
+      "usuario",
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     //_salvar();
+    //_recuperarUsuarioID(6);
+    //_excluirUsuario(4);
     _listarUsuario();
 
     return Container();
